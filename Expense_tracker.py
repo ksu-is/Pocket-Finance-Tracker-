@@ -15,7 +15,12 @@ def main():
 
 def get_user_expense():
     print(f"Getting User Expense")
-    input("Enter expense name: ")
+    expense_name = input("Enter expense name: ")
+    expense_amount = float(input("Enter expense amount: "))
+    print(f"You've entered {expense_name}, {expense_amount}")
+
+    expense_categories = ["🥞Food", "🏠Home", "💼Work", "🎊Fun", "✨Misc"]
+
 
 def save_expense_to_file():
     print(f"Saving User Expense")
