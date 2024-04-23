@@ -19,16 +19,23 @@ def get_user_expense():
     expense_amount = float(input("Enter expense amount: "))
     print(f"You've entered {expense_name}, {expense_amount}")
 
-    expense_categories = ["🥞Food", "🏠Home", "💼Work", "🎊Fun", "✨Misc"]
+    expense_categories = ["🥞Food", "🏠Home", "💼Work", "🎊Fun", "✨Misc", "🩺Health"]
+
+
+    while True:
+        print("Select a category: ")
+        for i, category_name in enumerate(expense_categories):
+            print(f" {i + 1}. {category_name}")
+        break
 
 
 def save_expense_to_file():
     print(f"Saving User Expense")
-   
+    
 
 def summarize_expenses():
     print(f"Summarizing User Expense")
-
+ 
 
 
 
