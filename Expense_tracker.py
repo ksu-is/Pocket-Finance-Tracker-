@@ -95,7 +95,11 @@ def summarize_expenses(expense_file_path, budget):
     remaining_days = days_in_month - now.day
 
     daily_budget = remaining_budget / remaining_days
-    print(f"👉Budget Per Day: ${daily_budget:.2f}")
+    print( pink(f"👉Budget Per Day: ${daily_budget:.2f}"))
+
+
+def pink(text):
+    return f"\033[95m{text}\033[0m"
 
 
 if __name__ == "__main__":
