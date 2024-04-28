@@ -7,12 +7,11 @@ def main():
 
 
     # Get user input for expense.
-    expense = get_user_expense()
-    print(expense)
+    # expense = get_user_expense()
 
 
     # Write their expense to a file.
-    save_expense_to_file(expense, expense_file_path)
+    # save_expense_to_file(expense, expense_file_path)
 
 
     # Read file and summarize expenses.
@@ -58,10 +57,29 @@ def save_expense_to_file(expense: Expense, expense_file_path):
         f.write(f"{expense.name}, {expense.amount}, {expense.category}\n")
     
 
-def summarize_expenses():
+def summarize_expenses(expense_file_path):
     print(f"Summarizing User Expense")
- 
+    expenses: list[Expense] = []
+    with open(expense_file_path, 'r', encoding= 'utf-8') as f:
+        lines = f.readlines()
+        for line in lines:
+            expense_name, expense_amount, expense_category = line.strip().split(",")
+            line_expense = Expense(
+                name=expense_name, amount=float(expense_amount), category=expense_category
+            )
+            expenses.append(line_expense)
 
+    amount_by_category = {}
+    for expense in expenses:
+        key = expense.category
+        if key in amount_by_category:
+            amount_by_category[key] += expense.amount
+        else:
+             amount_by_category[key] = expense.amount
+
+    print("Expenses By Category 📈:")
+    for key, amount in amount_by_category.items():
+        print(f"  {key}: ${amount:.2f}")
 
 if __name__ == "__main__":
-    main()
+     main()
